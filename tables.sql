@@ -159,6 +159,270 @@ VALUES (
         'Available',
         NULL,
         NULL
+    ),(
+        '135 High St',
+        'Midtown',
+        900,
+        450000,
+        TRUE,
+        '2018-01-01',
+        1,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '246 Oak St',
+        'Grapeseed',
+        2000,
+        900000,
+        FALSE,
+        '2014-01-01',
+        4,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '357 Broad St',
+        'Alamo Sea',
+        1200,
+        650000,
+        TRUE,
+        '2017-01-01',
+        2,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '468 Walnut Ave',
+        'Rockford Hills',
+        3000,
+        1500000,
+        FALSE,
+        '2010-01-01',
+        5,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '579 Cherry St',
+        'Blaine County',
+        800,
+        400000,
+        TRUE,
+        '2019-01-01',
+        2,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '680 Oak St',
+        'Vinewood',
+        1100,
+        550000,
+        FALSE,
+        '2015-01-01',
+        3,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '791 Main St',
+        'Midtown',
+        1000,
+        500000,
+        TRUE,
+        '2016-01-01',
+        2,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '802 Maple Ave',
+        'Grapeseed',
+        1800,
+        850000,
+        FALSE,
+        '2012-01-01',
+        4,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '913 Elm St',
+        'Alamo Sea',
+        1300,
+        700000,
+        TRUE,
+        '2014-01-01',
+        3,
+        'Sold',
+        '2022-03-15',
+        800000
+    ), (
+        '124 Pine Ave',
+        'Rockford Hills',
+        2500,
+        1200000,
+        FALSE,
+        '2009-01-01',
+        5,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '235 High St',
+        'Blaine County',
+        700,
+        350000,
+        TRUE,
+        '2020-01-01',
+        1,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '346 Oak St',
+        'Borjhar',
+        1000,
+        500000,
+        FALSE,
+        '2016-01-01',
+        2,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '457 Broad St',
+        'Midtown',
+        1200,
+        650000,
+        TRUE,
+        '2019-01-01',
+        2,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '568 Walnut Ave',
+        'Suburbia',
+        2200,
+        1100000,
+        FALSE,
+        '2010-01-01',
+        4,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '679 Cherry St',
+        'Downtown',
+        900,
+        450000,
+        TRUE,
+        '2017-01-01',
+        1,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '780 Main St',
+        'Rural',
+        1800,
+        900000,
+        FALSE,
+        '2013-01-01',
+        3,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '891 Maple Ave',
+        'West Boulevard',
+        1100,
+        550000,
+        TRUE,
+        '2015-01-01',
+        2,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '902 Elm St',
+        'Vinewood',
+        1400,
+        700000,
+        FALSE,
+        '2012-01-01',
+        3,
+        'Sold',
+        '2021-12-01',
+        750000
+    ), (
+        '113 Pine Ave',
+        'Midtown',
+        850,
+        425000,
+        TRUE,
+        '2018-01-01',
+        1,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '224 High St',
+        'Suburbia',
+        1600,
+        800000,
+        FALSE,
+        '2011-01-01',
+        4,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '335 Oak St',
+        'Downtown',
+        1100,
+        550000,
+        TRUE,
+        '2016-01-01',
+        2,
+        'Sold',
+        '2022-02-01',
+        650000
+    ), (
+        '446 Broad St',
+        'Rural',
+        2800,
+        1300000,
+        FALSE,
+        '2008-01-01',
+        5,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '557 Walnut Ave',
+        'West Boulevard',
+        650,
+        325000,
+        TRUE,
+        '2019-01-01',
+        1,
+        'Available',
+        NULL,
+        NULL
+    ), (
+        '668 Cherry St',
+        'Borjhar',
+        1000,
+        500000,
+        FALSE,
+        '2014-01-01',
+        2,
+        'Sold',
+        '2021-11-01',
+        550000
     );
 
 -- Sellers table
@@ -201,11 +465,40 @@ VALUES (
         6789012345,
         5,
         'Suburbia'
-    );
-
--- Holds table
-
-INSERT INTO Holds (Client_ID, P_ID) VALUES (1, 3), (2, 4);
+    )(
+        'Emily Nguyen',
+        7890123456,
+        6,
+        'Midtown'
+    ), (
+        'John Smith',
+        8901234567,
+        7,
+        'Blaine County'
+    ), (
+        'Ava Williams',
+        9012345678,
+        8,
+        'Grapeseed'
+    ), (
+        'Michael Brown',
+        1234567890,
+        9,
+        'Rockford Hills'
+    ), (
+        'Olivia Davis',
+        2345678901,
+        10,
+        'ALamo Sea'
+    ), (
+        'Ethan Wilson',
+        3456789012,
+        11,
+        'Vinewood'
+    ) -- Holds table
+INSERT INTO
+    Holds (Client_ID, P_ID)
+VALUES (1, 3), (2, 4);
 
 -- Sells table
 
@@ -235,4 +528,4 @@ TRUNCATE TABLE Shows;
 
 SET foreign_key_checks = 1;
 
-TRUNCATE TABLE Properties;
+TRUNCATE TABLE Shows;
