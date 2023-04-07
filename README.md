@@ -18,7 +18,7 @@ Make your changes in the forked repository.
 Pull request.
 
 ## Contirbutors
-  ADITI AGARWAL
-  AMAN YADAV
-  AMRITJOT KAUR CHAWLA
-  ANANT SHARMA
+  ADITI AGARWAL\
+  AMAN YADAV\
+  AMRITJOT KAUR CHAWLA\
+  ANANT SHARMA\
