@@ -16,3 +16,9 @@ Together, "Nimbus Aurora" can be interpreted as a name that combines the meaning
 To Contribute, click on the 'fork' option in the top right corner.
 Make your changes in the forked repository.
 Pull request.
+
+## Contirbutors
+  ADITI AGARWAL
+  AMAN YADAV
+  AMRITJOT KAUR CHAWLA
+  ANANT SHARMA
