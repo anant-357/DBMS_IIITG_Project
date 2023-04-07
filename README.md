@@ -4,12 +4,12 @@ Together, "Nimbus Aurora" can be interpreted as a name that combines the meaning
 
 # Entity Relationship Diagram
 
-![alt text](https://github.com/anant-357/DBMS_IIITG_Project/blob/main/ER.png?raw=true)
+![alt text](https://github.com/anant-357/DBMS_IIITG_Project/blob/main/documentation/ER.png?raw=true)
 
 
 # Relationship Schema
 
-![alt text](https://github.com/anant-357/DBMS_IIITG_Project/blob/main/RS.png?raw=true)
+![alt text](https://github.com/anant-357/DBMS_IIITG_Project/blob/main/documentation/RS.png?raw=true)
 
 
 # Contribution
