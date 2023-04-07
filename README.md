@@ -12,12 +12,13 @@ Together, "Nimbus Aurora" can be interpreted as a name that combines the meaning
 ![alt text](https://github.com/anant-357/DBMS_IIITG_Project/blob/main/documentation/RS.png?raw=true)
 
 ## Execution
-1. Clone the repository\
+1. Clone the repository
 ```git clone https://github.com/anant-357/DBMS_IIITG_Project.git
    cd DBMS_IIITG_Project```
-2. Source\
+   
+2. Source
 ``` source .RealEstateWebsite-env/bin/activate ```
-3. Run\
+3. Run
 ``` python main.py ```
 
 ## Contribution
