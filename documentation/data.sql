@@ -429,7 +429,7 @@ VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (
 INSERT INTO `Holds`
 VALUES (5, 14), (6, 23), (7, 26), (8, 29), (1, 3), (2, 4);
 
-SELECT * FROM `Shows`;
+SELECT * FROM `Clients`;
 
 SET foreign_key_checks = 1;
 
