@@ -6,7 +6,6 @@ from application.database import db
 
 app = None
 
-
 def build_app():
     app = Flask(__name__, template_folder="templates")
     if os.getenv("ENV", "development") == "production":
@@ -19,7 +18,6 @@ def build_app():
     secret = secrets.token_urlsafe(32)
     app.secret_key = secret
     return app
-
 
 app = build_app()
 
