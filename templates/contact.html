@@ -3,63 +3,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width= , initial-scale=1.0" />
-    <link rel="stylesheet" href="CSS/styles.css" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/styles.css')}}"
+    />
     <title>NIMBUS AURORA</title>
   </head>
   <body>
-    <nav class="navbar background1">
-      <ul class="nav-list">
-        <div class="logo">
-          <img src="IMAGES/1.png" alt="logo" />
-        </div>
-        <li>
-          <a href="#Realty">NIMBUS AURORA</a>
-        </li>
-      </ul>
-      <div class="rightNav">
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="aboutUs.html">ABOUT</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
-        <button class="btnLogin-popup">LOGIN</button>
-      </div>
-    </nav>
-
-    <section class="background firstSection-1">
+    {%include 'navbar.html'%}
+    <section class="background firstSection">
       <div class="box-main">
         <div class="firstHalf">
-          <h1 class="titles">ADD PROPERTY</h1>
-          <div class="form">
-            <div class="input_field">
-                <label>Address</label>
-                <input type="text" class="input">
-            </div>
-            <div class="input_field">
-                <label>Locality</label>
-                <input type="text" class="input">
-            </div>
-            <div class="input_field">
-                <label>Area</label>
-                <input type="number" class="input">
-            </div>
-            <div class="input_field">
-                <label>Price</label>
-                <input type="number" class="input">
-            </div>
-            <div class="input_field">
-                <label>Year</label>
-                <input type="number" class="input">
-            </div>
-            <div class="input_field">
-                <label>Rooms</label>
-                <input type="number" class="input">
-            </div>
-            <div class="input_field">
-                <label>Photo</label>
-                <input type="file" class="input">
-            </div>
-            <div class="input_field">
-                <button>Add Property</button>
-            </div>
+          <p class="text-big">CONTACT US</p>
+          <div class="text-small">
+            <p><a href="index.html">HOME</a></p>
+            <ion-icon name="caret-forward-outline" class="about"></ion-icon>
+            <p>Contact</p>
+            <ion-icon name="caret-forward-outline" class="about"></ion-icon>
           </div>
         </div>
         <div class="wrapper">
@@ -150,50 +110,36 @@
         </div>
       </div>
     </section>
-<hr>
+       <section class="secRight-contact">
+        <div class="values">
+          <div class="val-box">
+            <span class="list"><ion-icon name="map-outline"></ion-icon></span>
+            <div>
+              <span>Address</span>
+              <h3>123,XYZ Road,Bongora,Guwahati,IN</h3>
+            </div>
+          </div>
+          <div class="sale">
+            <span class="list"><ion-icon name="call-outline"></ion-icon></span>
+            <div>
+              <span>Phone No.</span>
+              <h3> 9237827833</h3>
+            </div>
+          </div>
+    
+          <div class="property">
+            <span class="list"><ion-icon name="mail-outline"></ion-icon></span>
+            <div>
+              <span>Email</span>
+              <h3>xyz423@gmail.com</h3>
+            </div>
+          </div>
+        </div>
+    </section>   
 
-<!-- <section class="secRight-about">
-  <div class="paras">
-  <p class="sectionTag">Welcome to Nimbus Aurora</p>
-  <p class="sectionSubTag text-small">Together, "Nimbus Aurora" can be interpreted as a name that combines the meanings of both words to evoke a sense of natural beauty and wonder. 
-    It could be a fitting name for a real estate project that aims to provide a tranquil and inspiring environment, perhaps with a focus on eco-friendly and sustainable design.</p>
-</div>
-<img src="IMAGES/realestate.webp" alt="" class="imgFluid">
-</section>   -->
+    {%include 'footer.html' %}
+    <script src="{{url_for('static', filename='js/index.js')}} "></script>
 
- <!-- <footer class="background1">
-
-  <div class="footer">
-  <div class="col-1">
-    <h3>Company</h3>
-    <a href="index.html">Home</a>
-    <a href="aboutUs.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
-
-  <div class="col-2">
-    <div class="logo-1">
-      <img src="IMAGES/1.png" alt="logo" />
-    </div>
-    <h3>NIMBUS AURORA</h3>
-  </div>
-
-  <div class="col-3">
-    <h3>Contact</h3>
-    <p>123,XYZ Road,<br>Bongora,Guwahati,IN</p>
-    <div class="social-icons">
-      <ion-icon name="logo-twitter"></ion-icon>
-      <ion-icon name="logo-facebook"></ion-icon>
-      <ion-icon name="logo-instagram"></ion-icon>
-    </div>
-  </div>
-</div>
-  <p class="text-footer">
-  Copyright &copy; 2027-Nimbus Aurora All rights reserved
-</p>
-</footer> -->
-
-    <script src="/JS/index.js "></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
