@@ -1,0 +1,16 @@
+<div class="navigation">
+  <div class="n1">
+    <div id="menu-bar">
+      <ion-icon name="menu-outline"></ion-icon>
+    </div>
+    <div class="search">
+      <span class="list"><ion-icon name="search"></ion-icon></span>
+      <input type="search" placeholder="search" />
+    </div>
+  </div>
+  <div class="profile">
+    <span class="list"><ion-icon name="person"></ion-icon></span>
+    <a href="{{url_for('agentProfile', agentID=agentID)}}">Profile</a>
+    <a href="{{url_for('logout')}}">LOGOUT</a>
+  </div>
+</div>
