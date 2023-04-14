@@ -36,7 +36,6 @@
   width: 100%;
 }
 
-
 .nav-list {
   display: flex;
   width: 45%;
@@ -500,11 +499,10 @@ input[type="number"]::-webkit-outer-spin-button {
   text-decoration: none;
   border-radius: 3rem;
   overflow: hidden;
-
 }
 
-.card{
-  display:flex;
+.card {
+  display: flex;
   flex-direction: column;
   margin: 10px;
 }
@@ -521,10 +519,16 @@ input[type="number"]::-webkit-outer-spin-button {
 .secRight-about {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   max-width: 80%;
-  margin: auto;
+  margin: 10% 10%;
 }
+
+/* .paras {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
 
 .sectionTag {
   font-size: 80px;
@@ -557,7 +561,6 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 300px;
   text-align: center;
   justify-content: center;
-  /* padding-bottom: 50px; */
   margin-top: 120px;
 }
 
@@ -625,9 +628,6 @@ input[type="number"]::-webkit-outer-spin-button {
 .col-2 h3 {
   font-size: 40px;
   padding-top: 10px;
-  text-align: center;
-  /* justify-content: center; */
-  /* align-items: center; */
   padding-left: 190px;
   padding-right: 114px;
 }
@@ -663,10 +663,7 @@ input[type="number"]::-webkit-outer-spin-button {
   color: lightblue;
   text-align: center;
   font-size: 20px;
-  /* margin-bottom: 120px; */
-  /* margin-top: 20px; */
   padding-bottom: 20px;
-  /* padding-right: 350px; */
   padding-left: 100px;
 }
 
@@ -809,12 +806,10 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .secRight-contact {
-  /* height: 300px; */
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   max-width: 80%;
-  margin: auto;
 }
 
 .secRight {
@@ -823,7 +818,6 @@ input[type="number"]::-webkit-outer-spin-button {
   justify-content: space-evenly;
   flex-direction: column;
 }
-
 
 .seller {
   width: 100%;
@@ -884,25 +878,22 @@ input[type="number"]::-webkit-outer-spin-button {
   padding-right: 20px;
 }
 
-.form .input_field button {
-  /* padding-top: 20px; */
-}
-
 .input {
   border: 0;
   border-bottom: 2px solid white;
   width: 70%;
   font-family: "Times New Roman", Times, serif;
   font-size: 15px;
-  /* padding: 1px 0; */
-  /* margin-bottom: 2px; */
-  /* text-align: center; */
   color: lightblue;
   outline: none;
   background: transparent;
 }
 
-.img{
+.img {
   /* background-color: #253047; */
   /* width:25% */
+}
+
+.thirdSection {
+  margin: 10% 0;
 }
