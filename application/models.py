@@ -24,6 +24,7 @@ class Properties(db.Model):
     Sell_Date = Column(Date)
     Sell_Price = Column(Integer)
     Broker = db.relationship("Brokers", secondary="Shows")
+    photos = db.relationship("Photos", backref="property")
 
 
 class Sellers(db.Model):

@@ -8,14 +8,14 @@ from application.models import (
     Shows,
     Clients,
     Sellers,
-    Sells,
+    Sells,Photos
 )
 
 
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "GET":
-        properties = Properties.query.all()
+        properties = Properties.query.join(Photos).all()
         if "badlogin" in session.keys():
             session.pop("badlogin")
             flash("Either userID or Password is wrong!")

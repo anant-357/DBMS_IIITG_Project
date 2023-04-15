@@ -14,30 +14,33 @@ from application.models import (
 
 @app.route("/agent/<agentID>/dashboard")
 def agent(agentID):
-    agentProperties = (
-        Properties.query.join(Shows).filter(Shows.License_ID == agentID).all()
-    )
-    recentlySoldProperties = (
-        Properties.query.join(Shows)
-        .filter(Shows.License_ID == agentID)
-        .filter(Properties.Status == "Sold")
-        .filter(Properties.Sell_Price != None)
-        .order_by(Properties.Sell_Date.desc())
-        .all()
-    )
+    if "userID" in session.keys() and session["userID"] == agentID:
+        agentProperties = (
+            Properties.query.join(Shows).filter(Shows.License_ID == agentID).all()
+        )
+        recentlySoldProperties = (
+            Properties.query.join(Shows)
+            .filter(Shows.License_ID == agentID)
+            .filter(Properties.Status == "Sold")
+            .filter(Properties.Sell_Price != None)
+            .order_by(Properties.Sell_Date.desc())
+            .all()
+        )
 
-    sale = sum([property.Sell_Price for property in recentlySoldProperties])
+        sale = sum([property.Sell_Price for property in recentlySoldProperties])
 
-    numberOfProperties = len(agentProperties)
+        numberOfProperties = len(agentProperties)
 
-    return render_template(
-        "agent/agent.html",
-        numberOfProperties=numberOfProperties,
-        recently_sold_properties=recentlySoldProperties,
-        numberOfCustomers=numberOfProperties,
-        sale=sale,
-        agentID=agentID,
-    )
+        return render_template(
+            "agent/agent.html",
+            numberOfProperties=numberOfProperties,
+            recently_sold_properties=recentlySoldProperties,
+            numberOfCustomers=numberOfProperties,
+            sale=sale,
+            agentID=agentID,
+        )
+    else:
+        return redirect(url_for("home"))
 
 
 @app.route("/agent/<agentID>/profile")
