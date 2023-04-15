@@ -49,7 +49,14 @@ def agent(agentID):
 
 @app.route("/agent/<agentID>/profile")
 def agentProfile(agentID):
-    return render_template("profile.html", agentID=agentID)
+    broker = Brokers.query.filter(Brokers.License_ID == agentID).first()
+    return render_template("agent/profile.html", broker=broker)
+
+
+@app.route("/agent/<agentID>")
+def agentProfileSimple(agentID):
+    broker = Brokers.query.filter(Brokers.License_ID == agentID).first()
+    return render_template("agent/profileSimple.html", broker=broker)
 
 
 @app.route("/agent/<agentID>/properties")
