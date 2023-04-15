@@ -1,5 +1,5 @@
 class mysqlConfig:
     host='localhost'
     database='RE'
-    user='zinnia'
-    password='luffy'
+    user='root'
+    password='CR7aman$$'
