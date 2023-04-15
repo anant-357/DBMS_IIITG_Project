@@ -76,18 +76,17 @@ def isValidUser(userID, password, type):
         for broker in checkList:
             print(broker.License_ID, broker.Password)
             if str(broker.License_ID) == str(userID) and broker.Password == password:
-                print("yes")
                 return (True, broker.Name)
 
     elif type == "Client":
         checkList = Clients.query.all()
         for client in checkList:
-            if client.Client_ID == userID and client.Password == password:
+            if str(client.Client_ID) == str(userID) and client.Password == password:
                 return (True, client.Name)
 
     elif type == "Seller":
         checkList = Sellers.query.all()
         for seller in checkList:
-            if seller.Seller_ID == userID and seller.Password == password:
+            if str(seller.Seller_ID) == str(userID) and seller.Password == password:
                 return (True, seller.Name)
     return (False, "")

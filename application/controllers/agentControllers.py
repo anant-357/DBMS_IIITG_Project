@@ -14,7 +14,11 @@ from application.models import (
 
 @app.route("/agent/<agentID>/dashboard")
 def agent(agentID):
-    if "userID" in session.keys() and session["userID"] == agentID:
+    if (
+        "userID" in session.keys()
+        and session["userID"] == agentID
+        and session["type"] == "Agent"
+    ):
         agentProperties = (
             Properties.query.join(Shows).filter(Shows.License_ID == agentID).all()
         )
