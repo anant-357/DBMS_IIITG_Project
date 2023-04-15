@@ -141,25 +141,62 @@
       <div class="heading">
         <h2 class="h1-text-big">POPULAR PROPERTIES</h2>
       </div>
-      <div class="images-1">
+      <div class="properties">
         {%for property in properties%}
-        <a href="" class="img">
-          <div class="card">
-            <img
-              src="{{url_for('static',filename='images/properties/'+property.photos[0].Photo_URL)}}"
-              alt=""
-            />
-            <h4>{{property.Price}}</h4>
-            <h4>{{property.Address}},{{property.Locality}}</h4>
+        <div class="card">
+          <img
+            src="{{url_for('static',filename='images/properties/'+property.photos[0].Photo_URL)}}"
+            alt=""
+            class="property-img"
+          />
+          <div class="property-data">
+            <h4>Price : {{property.Price}}</h4>
+            <h4>Address : {{property.Address}}</h4>
+            <h4>Locality : {{property.Locality}}</h4>
           </div>
-        </a>
+          <div class="buy-property">
+            {%if "type" in session.keys() and session["type"] == 'Client'%}
+            <a
+              href="{{url_for('agentProfileSimple', agentID = property.Broker[0].License_ID)}}"
+              class="buy-link"
+              >Connect</a
+            >
+            {%else%}
+            <style>
+              .buy-link:hover {
+                cursor: not-allowed;
+              }
+              .buy-link:hover::before {
+                content: "Log in as Client to ";
+              }
+            </style>
+            <a href="#" class="buy-link">Connect</a>
+            {%endif%}
+          </div>
+        </div>
         {%endfor%}
       </div>
     </section>
     <section class="thirdSection">
       <div class="seller">
-        <h1>ADD YOUR PROPERTY FOR SALE</h1>
-        <button><a href="{{url_for('addProperty')}}">Add Property</a></button>
+        <div class="buy-property">
+          <h1>ADD YOUR PROPERTY FOR SALE</h1>
+          <div class="buy-property">
+            {%if "type" in session.keys() and session["type"] == 'Client'%}
+            <a href="{{url_for('addProperty')}}" class="buy-link">Connect</a>
+            {%else%}
+            <style>
+              .buy-link:hover {
+                cursor: not-allowed;
+              }
+              .buy-link:hover::before {
+                content: "Log in as Client to ";
+              }
+            </style>
+            <a href="#" class="buy-link">Add Property</a>
+            {%endif%}
+          </div>
+        </div>
       </div>
     </section>
 
