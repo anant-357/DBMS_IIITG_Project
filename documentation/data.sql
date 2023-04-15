@@ -58,8 +58,8 @@ VALUES (
         '2005-01-01',
         4,
         'Sold',
-        NULL,
-        NULL
+        '2019-11-11',
+        800000
     ), (
         '321 Maple St',
         'Downtown',
@@ -69,8 +69,8 @@ VALUES (
         '2015-01-01',
         1,
         'Sold',
-        NULL,
-        NULL
+        '2020-11-11',
+        380000
     ), (
         '654 Pine Ave',
         'Borjhar',
@@ -429,8 +429,13 @@ VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (
 INSERT INTO `Holds`
 VALUES (5, 14), (6, 23), (7, 26), (8, 29), (1, 3), (2, 4);
 
-SELECT * FROM `Clients`;
+SELECT * FROM `Properties`;
 
 SET foreign_key_checks = 1;
 
 TRUNCATE TABLE Brokers;
+
+
+UPDATE `Sellers` SET Password = "cccccccc";
+
+SELECT * FROM `Clients`;

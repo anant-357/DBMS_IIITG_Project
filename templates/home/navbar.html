@@ -11,7 +11,25 @@
     <li><a href="{{url_for('home')}}">HOME</a></li>
     <li><a href="{{url_for('aboutUs')}}">ABOUT</a></li>
     <li><a href="{{url_for('contactUs')}}">CONTACT</a></li>
+    {%if 'username' in session.keys()%} {%if session['type'] == "Agent"%}
+    <li>
+      <a href="{{url_for('agent', agentID = session['userID'])}}"
+        >{{session['username']}}</a
+      >
+    </li>
+    <li>
+      <a href="{{url_for('logout')}}">Logout</a>
+    </li>
+    {%else%}
+    <li>
+      <a href="#"> {{session['username']}} </a>
+    </li>
+    <li>
+      <a href="{{url_for('logout')}}">Logout</a>
+    </li>
+    {%endif%} {%else%}
     <button class="btnLogin-popup">LOGIN</button>
+    {%endif%}
   </div>
 </nav>
 <style>
