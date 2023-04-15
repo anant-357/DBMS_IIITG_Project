@@ -436,7 +436,7 @@ SET foreign_key_checks = 1;
 TRUNCATE TABLE Brokers;
 
 
-UPDATE `Sellers` SET Password = "cccccccc";
+UPDATE `Brokers` SET Password = "bbbbbbbb";
 
 SELECT * FROM `Clients`;
 
@@ -449,3 +449,13 @@ VALUES (1, "960x0.jpg"), (2, "160808_ej_one57_0009_-_h_2017.webp"), (3, "1069790
 INSERT INTO Photos(P_ID, Photo_URL)
 VALUES (16,"P1.jpg"), (17,"P2.jpg"), (18,"P3.jpg"), (19,"P4.jpg"),
   (20,"P5.jpg"), (21,"P6.jpg"), (22,"P7.jpg"), (23,"P8.jpg"), (24,"P9.jpg"), (25,"P10.jpg"), (26,"P11.jpg"), (27,"P12.jpg"), (28,"P13.jpg"), (29,"P14.jpg");
+
+INSERT INTO Brokers(Photo)
+VALUES ("A1.jpg"), ("A2.webp"), ("A3.jpeg"), ("A4.jpg"), ("A5.jpg"), ("A6.webp"), ("A7.jpg"), ("A8.webp"),
+ ("A9.jpg"), ("A10.jpg"), ("A11.webp");
+
+DELETE FROM Brokers WHERE License_ID>11;
+
+UPDATE Brokers 
+SET Photo="A11.webp"
+WHERE LICENSE_ID=11;
