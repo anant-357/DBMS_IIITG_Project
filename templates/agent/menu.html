@@ -1,7 +1,15 @@
 <section id="menu">
   <div class="logo">
     <img src="{{url_for('static', filename='images/1.png')}}" alt="" />
-    <h2>NIMBUS AURORA</h2>
+    <h2>
+      <style>
+        .head-a{
+          text-decoration: None;
+          color: lightblue;
+        }
+      </style>
+      <a href="{{url_for('home')}}" class="head-a"> NIMBUS AURORA </a>
+    </h2>
   </div>
   <div class="items">
     <li>

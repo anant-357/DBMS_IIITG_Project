@@ -7,6 +7,7 @@ CREATE TABLE
         Client_ID INTEGER AUTO_INCREMENT,
         Name VARCHAR(255),
         Phone_no NUMERIC(10, 0),
+        Password VARCHAR(255),
         PRIMARY KEY (Client_ID)
     );
 
@@ -31,6 +32,7 @@ CREATE TABLE
         Seller_ID INTEGER AUTO_INCREMENT,
         Name VARCHAR(255),
         Phone_no NUMERIC(10, 0),
+        Password VARCHAR(255)
         PRIMARY KEY (Seller_ID)
     );
 
@@ -41,6 +43,7 @@ CREATE TABLE
         Phone_no NUMERIC(10, 0),
         Brokerage INTEGER,
         Locality VARCHAR(255),
+        Password VARCHAR(255)
         PRIMARY KEY (License_ID)
     );
 
@@ -98,4 +101,8 @@ DELIMITER ;
 
 SELECT * FROM `Clients` ;
 
-CREATE INDEX Recently_Sold_Properties ON `Properties` (Sell_Date)
+CREATE INDEX Recently_Sold_Properties ON `Properties` (Sell_Date);
+
+ALTER TABLE `Sellers` ADD COLUMN Password VARCHAR(255);
+
+

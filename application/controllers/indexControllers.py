@@ -11,43 +11,29 @@ from application.models import (
     Sells,
 )
 
-@app.route("/")
+
+@app.route("/", methods=["GET", "POST"])
 def home():
-    properties = Properties.query.all()
-    return render_template("home/index.html", properties=properties)
+    if request.method == "GET":
+        properties = Properties.query.all()
+        if "badlogin" in session.keys():
+            session.pop("badlogin")
+            flash("Either userID or Password is wrong!")
+        return render_template("home/index.html", properties=properties)
 
-
-@app.route("/login")
-def login():
-    if request.method == "POST":
-        user_name = request.form["userID"]
+    elif request.method == "POST":
+        user_id = request.form["userID"]
         password = request.form["password"]
-        isAdmin = False
-        try:
-            if request.form["isAdmin"] == "on":
-                isAdmin = True
-        except:
-            pass
-
-        if isAdmin and isValidUser(user_name, password, isAdmin):
-            session["username"] = user_name
-            session["admin"] = True
-            session["badlogin"] = False
-            return redirect(url_for("adminDashboard"))
-        elif isValidUser(user_name, password, isAdmin):
-            session["username"] = user_name
-            session["admin"] = False
-            session["badlogin"] = False
-            return redirect(url_for("userDashboard"), username=session["username"])
+        type = request.form["type"]
+        validity = isValidUser(user_id, password, type)
+        if validity[0]:
+            session["userID"] = user_id
+            session["type"] = type
+            session["username"] = validity[1]
+            return redirect(url_for("home"))
         else:
             session["badlogin"] = True
-
-    if "badlogin" in session.keys():
-        session.pop("badlogin")
-        flash("Either Username or Password is wrong!")
-        return render_template("index.html")
-    else:
-        return render_template("index.html")
+        return redirect(url_for("home"))
 
 
 @app.route("/logout")
@@ -68,4 +54,3 @@ def contactUs():
 @app.route("/addProperty")
 def addProperty():
     return render_template("home/addProp.html")
-

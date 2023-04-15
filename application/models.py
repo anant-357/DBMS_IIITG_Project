@@ -7,6 +7,7 @@ class Clients(db.Model):
     Client_ID = Column(Integer, primary_key=True, autoincrement=True)
     Name = Column(String)
     Phone_no = Column(Integer)
+    Password = Column(String)
 
 
 class Properties(db.Model):
@@ -30,6 +31,7 @@ class Sellers(db.Model):
     Seller_ID = Column(Integer, primary_key=True, autoincrement=True)
     Name = Column(String)
     Phone_no = Column(Integer)
+    Password = Column(String)
 
 
 class Brokers(db.Model):
@@ -39,6 +41,7 @@ class Brokers(db.Model):
     Phone_no = Column(Integer)
     Brokerage = Column(Integer)
     Locality = Column(String)
+    Password = Column(String)
     Properties = db.relationship("Properties", secondary="Shows")
 
 
@@ -66,5 +69,24 @@ class Photos(db.Model):
     Photo_URL = Column(String, primary_key=True)
 
 
-def isValidUser():
-    pass
+def isValidUser(userID, password, type):
+    if type == "Agent":
+        checkList = Brokers.query.all()
+        for broker in checkList:
+            print(broker.License_ID, broker.Password)
+            if str(broker.License_ID) == str(userID) and broker.Password == password:
+                print("yes")
+                return (True, broker.Name)
+
+    elif type == "Client":
+        checkList = Clients.query.all()
+        for client in checkList:
+            if client.Client_ID == userID and client.Password == password:
+                return (True, client.Name)
+
+    elif type == "Seller":
+        checkList = Sellers.query.all()
+        for seller in checkList:
+            if seller.Seller_ID == userID and seller.Password == password:
+                return (True, seller.Name)
+    return (False, "")
