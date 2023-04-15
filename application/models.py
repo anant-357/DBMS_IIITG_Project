@@ -43,6 +43,7 @@ class Brokers(db.Model):
     Brokerage = Column(Integer)
     Locality = Column(String)
     Password = Column(String)
+    Photo = Column(String)
     Properties = db.relationship("Properties", secondary="Shows")
 
 

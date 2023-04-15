@@ -103,6 +103,10 @@ SELECT * FROM `Clients`;
 
 CREATE INDEX Recently_Sold_Properties ON `Properties` (Sell_Date);
 
-ALTER TABLE `Sellers` ADD COLUMN Password VARCHAR(255);
+ALTER TABLE `Brokers` ADD COLUMN Password VARCHAR(255);
+
+ALTER TABLE Brokers
+ADD COLUMN Photo VARCHAR(255);
+
 
 
