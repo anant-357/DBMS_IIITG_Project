@@ -1,5 +1,7 @@
 from flask import current_app as app, session, request, url_for, redirect, flash
 from flask import render_template
+from sqlalchemy import func
+from application.database import db
 from application.models import (
     Properties,
     Holds,
@@ -29,17 +31,29 @@ def admin():
     bestPrice = (
         Properties.query.filter(Properties.Status == "sold")
         .filter(Properties.Sell_Date != None)
-        .order_by(Properties.Sell_Price)
+        .order_by(Properties.Sell_Price.desc())
         .first()
     )
 
-    qualityBroker = None
+    quantityBroker = (
+        db.session.query(Brokers, func.count(Properties.P_ID))
+        .filter(Properties.Broker.any())
+        .filter(Properties.Status == "sold")
+        .group_by(Brokers)
+        .order_by(func.count(Properties.P_ID).desc())
+        .first()
+    )
 
-    quantityBroker = None
-
+    qualityBroker = (
+        db.session.query(Brokers)
+        .join(Brokers.Properties)
+        .filter(Properties.Status == "sold")
+        .order_by(Properties.Sell_Price.desc())
+        .first()
+    )
     numberOfLocalities = len(Brokers.query.all())
 
-    candidates = Brokers.query.filter(Brokers.Properties)
+    # candidates = Brokers.query.filter(Brokers.Properties)
 
     for property in soldProperties:
         if property.Rent == True:
@@ -56,6 +70,8 @@ def admin():
         properties=properties,
         bestPrice=bestPrice.Sell_Price,
         numberOfLocalities=numberOfLocalities,
+        qualityBroker = qualityBroker,
+        quantityBroker = quantityBroker
     )
 
 

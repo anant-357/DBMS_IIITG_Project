@@ -99,7 +99,7 @@ FOR EACH ROW BEGIN
 
 DELIMITER ;
 
-SELECT * FROM `Clients` ;
+SELECT * FROM `Clients`;
 
 CREATE INDEX Recently_Sold_Properties ON `Properties` (Sell_Date);
 
