@@ -439,3 +439,8 @@ TRUNCATE TABLE Brokers;
 UPDATE `Sellers` SET Password = "cccccccc";
 
 SELECT * FROM `Clients`;
+
+INSERT INTO Photos(P_ID, Photo_URL)
+VALUES (1, "960x0.jpg"), (2, "160808_ej_one57_0009_-_h_2017.webp"), (3, "106979071-1637620676414Twilight_Aerial_1.jpg"), (4, "262055618.jpg"), (5,"Beverly_Ridge8.webp"), (6, "Exterior-3.jpeg"),
+ (7,"Hogwartsmatte1c2_29.webp"), (8,"im-547887.avif"), (9,"large_1.living-room.jpg"), (10,"luxury-villa-palm-jumeirah-dubai-uae-dec-december-united-arab-emirates-49610735.jpg"), (11, "one57-41a-11.jpg"),
+  (12,"photo-1634221558053-3a617b5201d9.jfif"), (13,"Property-0f4c000000000728000162921b40-120081423.jpg"), (14,"wp3784214.jpg"), (15,"wp3784236.webp");
