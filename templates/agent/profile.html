@@ -35,16 +35,16 @@
       <h3 class="i-name">PROFILE</h3>
       <div class="rightbox">
         <h2>License Id</h2>
-        <input type="number" class="input" value="1" readonly />
+        <input type="number" class="input" value={{agentID}} readonly />
 
         <h2>Name</h2>
-        <input type="text" class="input" value="Jane DOE" readonly />
+        <input type="text" class="input" value="{{broker.Name}}" readonly />
 
         <h2>Phone Number</h2>
-        <input type="tel" class="input" value="9834523572" readonly />
+        <input type="tel" class="input" value="{{broker.Phone_no}}" readonly />
 
         <h2>Locality</h2>
-        <input type="text" class="input" value="Bongora" readonly />
+        <input type="text" class="input" value="{{broker.Locality}}" readonly />
       </div>
     </section>
     <script>
