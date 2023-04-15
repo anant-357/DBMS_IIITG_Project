@@ -47,9 +47,23 @@ def agentProfile(agentID):
 
 @app.route("/agent/<agentID>/properties")
 def agentProperties(agentID):
-    properties = Properties.query.join(Shows).filter(Shows.License_ID == agentID).all()
+    soldProperties = (
+        Properties.query.join(Shows)
+        .filter(Shows.License_ID == agentID)
+        .filter(Properties.Status == "Sold")
+        .all()
+    )
+    pendingProperties = (
+        Properties.query.join(Shows)
+        .filter(Shows.License_ID == agentID)
+        .filter(Properties.Status == "Available")
+        .all()
+    )
     return render_template(
-        "agent/properties.html", agentID=agentID, properties=properties
+        "agent/properties.html",
+        agentID=agentID,
+        pendingProperties=pendingProperties,
+        soldProperties=soldProperties,
     )
 
 
