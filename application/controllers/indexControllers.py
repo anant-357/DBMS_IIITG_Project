@@ -38,7 +38,10 @@ def home():
 
 @app.route("/logout")
 def logout():
-    return "logout"
+    session.pop("username")
+    session.pop("type")
+    session.pop("userID")
+    return redirect(url_for("home"))
 
 
 @app.route("/aboutUs")
