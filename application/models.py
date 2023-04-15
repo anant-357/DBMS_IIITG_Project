@@ -75,9 +75,7 @@ def isValidUser(userID, password, type):
     if type == "Agent":
         checkList = Brokers.query.all()
         for broker in checkList:
-            print(broker.License_ID, broker.Password)
             if str(broker.License_ID) == str(userID) and broker.Password == password:
-                print("yes")
                 return (True, broker.Name)
 
     elif type == "Client":

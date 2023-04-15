@@ -37,8 +37,8 @@
                   {%for broker in brokers%}
                   <tr>
                     <td>{{broker.License_ID}}</td>
-                    <td><img src="{{url_for('static',filename='images/Broker/'+broker.Photo)}}" /></td>
                     <td>{{broker.Name}}</td>
+                    <td><img src="{{url_for('static',filename='images/Broker/'+broker.Photo)}}" /></td>
                     <td>{{broker.Phone_no}}</td>
                     <td>{{broker.Brokerage}}</td>
                     <td>{{broker.Locality}}</td>
