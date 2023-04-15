@@ -22,6 +22,7 @@ class Properties(db.Model):
     Status = Column(String)
     Sell_Date = Column(Date)
     Sell_Price = Column(Integer)
+    Broker = db.relationship("Brokers", secondary="Shows")
 
 
 class Sellers(db.Model):
@@ -38,6 +39,7 @@ class Brokers(db.Model):
     Phone_no = Column(Integer)
     Brokerage = Column(Integer)
     Locality = Column(String)
+    Properties = db.relationship("Properties", secondary="Shows")
 
 
 class Holds(db.Model):
@@ -62,3 +64,7 @@ class Photos(db.Model):
     __tablename__ = "Photos"
     P_ID = Column(Integer, ForeignKey("Properties.P_ID"), primary_key=True)
     Photo_URL = Column(String, primary_key=True)
+
+
+def isValidUser():
+    pass
