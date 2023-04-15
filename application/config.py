@@ -1,7 +1,9 @@
 import os
-from console_extras.mysql_config import mysqlConfig
+from application.mysql_config import mysqlConfig
 
 basedir = os.path.abspath(os.path.dirname(__file__))
+
+
 class Config:
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = None
@@ -10,4 +12,14 @@ class Config:
 
 class LocalDevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://" + str(mysqlConfig.user) + ":" + str(mysqlConfig.password) + "@" + str(mysqlConfig.host) + "/" + str(mysqlConfig.database) + "?charset=utf8mb4"
+    SQLALCHEMY_DATABASE_URI = (
+        "mysql+pymysql://"
+        + str(mysqlConfig.user)
+        + ":"
+        + str(mysqlConfig.password)
+        + "@"
+        + str(mysqlConfig.host)
+        + "/"
+        + str(mysqlConfig.database)
+        + "?charset=utf8mb4"
+    )
