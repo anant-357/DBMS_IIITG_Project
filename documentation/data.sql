@@ -457,5 +457,5 @@ VALUES ("A1.jpg"), ("A2.webp"), ("A3.jpeg"), ("A4.jpg"), ("A5.jpg"), ("A6.webp")
 DELETE FROM Brokers WHERE License_ID>11;
 
 UPDATE Brokers 
-SET Photo="A11.webp"
-WHERE LICENSE_ID=11;
+SET Photo="A9.jpg"    
+WHERE LICENSE_ID=9;
