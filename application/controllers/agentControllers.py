@@ -14,11 +14,7 @@ from application.models import (
 
 @app.route("/agent/<agentID>/dashboard")
 def agent(agentID):
-    if (
-        "userID" in session.keys()
-        and session["userID"] == agentID
-        and session["type"] == "Agent"
-    ):
+    if "type" in session.keys() and session["type"] == "Agent":
         agentProperties = (
             Properties.query.join(Shows).filter(Shows.License_ID == agentID).all()
         )
@@ -49,8 +45,11 @@ def agent(agentID):
 
 @app.route("/agent/<agentID>/profile")
 def agentProfile(agentID):
-    broker = Brokers.query.filter(Brokers.License_ID == agentID).first()
-    return render_template("agent/profile.html", broker=broker)
+    if "type" in session.keys() and session["type"] == "Agent":
+        broker = Brokers.query.filter(Brokers.License_ID == agentID).first()
+        return render_template("agent/profile.html", broker=broker)
+    else:
+        return redirect(url_for("home"))
 
 
 @app.route("/agent/<agentID>")
@@ -61,42 +60,48 @@ def agentProfileSimple(agentID):
 
 @app.route("/agent/<agentID>/properties")
 def agentProperties(agentID):
-    soldProperties = (
-        Properties.query.join(Shows)
-        .filter(Shows.License_ID == agentID)
-        .filter(Properties.Status == "Sold")
-        .all()
-    )
-    pendingProperties = (
-        Properties.query.join(Shows)
-        .filter(Shows.License_ID == agentID)
-        .filter(Properties.Status == "Available")
-        .all()
-    )
-    return render_template(
-        "agent/properties.html",
-        agentID=agentID,
-        pendingProperties=pendingProperties,
-        soldProperties=soldProperties,
-    )
+    if "type" in session.keys() and session["type"] == "Agent":
+        soldProperties = (
+            Properties.query.join(Shows)
+            .filter(Shows.License_ID == agentID)
+            .filter(Properties.Status == "Sold")
+            .all()
+        )
+        pendingProperties = (
+            Properties.query.join(Shows)
+            .filter(Shows.License_ID == agentID)
+            .filter(Properties.Status == "Available")
+            .all()
+        )
+        return render_template(
+            "agent/properties.html",
+            agentID=agentID,
+            pendingProperties=pendingProperties,
+            soldProperties=soldProperties,
+        )
+    else:
+        return redirect(url_for("home"))
 
 
 @app.route("/agent/<agentID>/customers")
 def agentCustomers(agentID):
-    clients = (
-        Clients.query.join(Holds, Holds.Client_ID == Clients.Client_ID)
-        .join(Properties, Properties.P_ID == Holds.P_ID)
-        .join(Shows, Shows.P_ID == Properties.P_ID)
-        .filter(Shows.License_ID == agentID)
-        .all()
-    )
-    sellers = (
-        Sellers.query.join(Sells)
-        .join(Properties, Properties.P_ID == Sells.P_ID)
-        .join(Shows, Shows.P_ID == Properties.P_ID)
-        .filter(Shows.License_ID == agentID)
-        .all()
-    )
-    return render_template(
-        "agent/customers.html", agentID=agentID, clients=clients, sellers=sellers
-    )
+    if "type" in session.keys() and session["type"] == "Agent":
+        clients = (
+            Clients.query.join(Holds, Holds.Client_ID == Clients.Client_ID)
+            .join(Properties, Properties.P_ID == Holds.P_ID)
+            .join(Shows, Shows.P_ID == Properties.P_ID)
+            .filter(Shows.License_ID == agentID)
+            .all()
+        )
+        sellers = (
+            Sellers.query.join(Sells)
+            .join(Properties, Properties.P_ID == Sells.P_ID)
+            .join(Shows, Shows.P_ID == Properties.P_ID)
+            .filter(Shows.License_ID == agentID)
+            .all()
+        )
+        return render_template(
+            "agent/customers.html", agentID=agentID, clients=clients, sellers=sellers
+        )
+    else:
+        return redirect(url_for("home"))
