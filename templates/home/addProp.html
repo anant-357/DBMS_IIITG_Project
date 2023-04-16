@@ -25,7 +25,7 @@
           <div class="form">
             <div class="input_field">
                 <label>Address</label>
-                <input type="text" class="input">
+                <input type="text" class="input" name="address">
             </div>
             <div class="input_field">
                 <label>Locality</label>
@@ -99,17 +99,15 @@
                 <span class="icon"
                   ><ion-icon name="person-outline"></ion-icon
                 ></span>
-                <input type="number" class="licenseid" />
+                <input type="number" class="licenseid"/>
                 <label>License Id</label>
-                <!-- <p class="error licenseId-error"></p> -->
               </div>
               <div class="input-box">
                 <span class="icon">
                   <ion-icon name="call-outline"></ion-icon>
                 </span>
                 <input type="tel" class="phone" />
-                <label>Phn no.</label>
-                <!-- <p class="error phone-error"></p>              -->
+                <label>Phn no.</label>         
               </div>
               <div class="input-box">
                 <span class="icon"
@@ -117,7 +115,6 @@
                 ></span>
                 <input type="password" class="pswd" />
                 <label>Password</label>
-                <!-- <p class="error password-error"></p> -->
               </div>
 
               <div class="input-box">
@@ -126,12 +123,10 @@
                 ></span>
                 <input type="password" class="pswd" />
                 <label>Confirm Password</label>
-                <!-- <p class="error confirm-error"></p> -->
               </div>
               <div class="terms-condition">
                
                 <button type="submit" class="btn-register">REGISTER</button>
-                <!-- <p class="error register-error"></p> -->
               </div>
               <div class="login-register">
                 <p>Already have an account? 
@@ -146,7 +141,7 @@
     </section>
 <hr>
 
-{% include 'footer.html' %}
+{% include 'home/footer.html' %}
  
 
     <script src="{{url_for('static', filename='js/index.js')}} "></script>

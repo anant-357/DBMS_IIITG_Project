@@ -150,7 +150,7 @@
             class="property-img"
           />
           <div class="property-data">
-            <h4>Price : {{property.Price}}</h4>
+            <h4>Price : $ {{property.Price}}</h4>
             <h4>Address : {{property.Address}}</h4>
             <h4>Locality : {{property.Locality}}</h4>
           </div>
@@ -179,18 +179,18 @@
     </section>
     <section class="thirdSection">
       <div class="seller">
+        <h1>ADD YOUR PROPERTY FOR SALE</h1>
         <div class="buy-property">
-          <h1>ADD YOUR PROPERTY FOR SALE</h1>
           <div class="buy-property">
-            {%if "type" in session.keys() and session["type"] == 'Client'%}
-            <a href="{{url_for('addProperty')}}" class="buy-link">Connect</a>
+            {%if "type" in session.keys() and session["type"] == 'Seller'%}
+            <a href="{{url_for('addProperty')}}">Add Property</a>
             {%else%}
             <style>
               .buy-link:hover {
                 cursor: not-allowed;
               }
               .buy-link:hover::before {
-                content: "Log in as Client to ";
+                content: "Log in as Seller to ";
               }
             </style>
             <a href="#" class="buy-link">Add Property</a>
