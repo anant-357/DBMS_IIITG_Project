@@ -3,12 +3,7 @@ from flask import render_template
 from application.models import (
     Properties,
     isValidUser,
-    Holds,
-    Brokers,
-    Shows,
-    Clients,
-    Sellers,
-    Sells,Photos
+    Photos,
 )
 
 
@@ -38,9 +33,10 @@ def home():
 
 @app.route("/logout")
 def logout():
-    session.pop("username")
-    session.pop("type")
-    session.pop("userID")
+    if "username" in session.keys():
+        session.pop("username")
+        session.pop("type")
+        session.pop("userID")
     return redirect(url_for("home"))
 
 
@@ -54,6 +50,14 @@ def contactUs():
     return render_template("home/contact.html")
 
 
-@app.route("/addProperty")
+@app.route("/addProperty", methods=["POST", "GET"])
 def addProperty():
-    return render_template("home/addProp.html")
+    if "type" in session.keys() and session["type"] == "Seller":
+        if request.method == "GET":
+            return render_template("home/addProp.html")
+        elif request.method == "POST":
+            request.form['']
+        else:
+            pass
+    else:
+        redirect(url_for("home"))
