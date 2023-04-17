@@ -155,22 +155,23 @@
             <h4>Locality : {{property.Locality}}</h4>
           </div>
           <div class="buy-property">
-            {%if "type" in session.keys() and session["type"] == 'Client'%}
-            <a
-              href="{{url_for('agentProfileSimple', agentID = property.Broker[0].License_ID)}}"
-              class="buy-link"
-              >Connect</a
-            >
-            {%else%}
+            {%if "type" not in session.keys() or session["type"] != 'Client'%}
             <style>
-              .buy-link:hover {
+              .buy-property-link:hover {
                 cursor: not-allowed;
               }
-              .buy-link:hover::before {
+              .buy-property-link:hover::before {
                 content: "Log in as Client to ";
               }
             </style>
-            <a href="#" class="buy-link">Connect</a>
+            <a href="#" class="buy-property-link">Connect</a>
+            {%else%}
+            <a
+              href="{{url_for('agentProfileSimple', agentID = property.Broker[0].License_ID)}}"
+              class="buy-property-link"
+              >Connect</a
+            >
+
             {%endif%}
           </div>
         </div>
@@ -180,22 +181,22 @@
     <section class="thirdSection">
       <div class="seller">
         <h1>ADD YOUR PROPERTY FOR SALE</h1>
-        <div class="buy-property">
-          <div class="buy-property">
-            {%if "type" in session.keys() and session["type"] == 'Seller'%}
-            <a href="{{url_for('addProperty')}}">Add Property</a>
-            {%else%}
-            <style>
-              .buy-link:hover {
-                cursor: not-allowed;
-              }
-              .buy-link:hover::before {
-                content: "Log in as Seller to ";
-              }
-            </style>
-            <a href="#" class="buy-link">Add Property</a>
-            {%endif%}
-          </div>
+        <div class="sell-property">
+          {%if "type" in session.keys() and session["type"] == 'Seller'%}
+          <a class="sell-link" href="{{url_for('addProperty')}}"
+            >Add Property</a
+          >
+          {%else%}
+          <style>
+            .sell-link:hover {
+              cursor: not-allowed;
+            }
+            .sell-link:hover::before {
+              content: "Log in as Seller to ";
+            }
+          </style>
+          <a href="#" class="sell-link">Add Property</a>
+          {%endif%}
         </div>
       </div>
     </section>
