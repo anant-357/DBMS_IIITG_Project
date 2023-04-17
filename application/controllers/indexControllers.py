@@ -1,10 +1,7 @@
 from flask import current_app as app, session, request, url_for, redirect, flash
 from flask import render_template
-from application.models import (
-    Properties,
-    isValidUser,
-    Photos,
-)
+from application.models import Properties, isValidUser, Photos, Sells
+from application.database import db
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -56,8 +53,44 @@ def addProperty():
         if request.method == "GET":
             return render_template("home/addProp.html")
         elif request.method == "POST":
-            request.form['']
+            address = request.form["address"]
+            locality = request.form["locality"]
+            area = request.form["area"]
+            price = request.form["price"]
+            yearOfConstruction = request.form["yearOfConstruction"]
+            rooms = request.form["rooms"]
+            photo = request.files["photo"]
+            photoname = photo.filename
+            photo.save("static/images/properties/" + photoname)
+            print("here")
+            property = Properties(
+                Address=address,
+                Locality=locality,
+                Area=area,
+                Price=price,
+                Rent=False,
+                Date_Of_Construction=yearOfConstruction,
+                No_Of_Bedrooms=rooms,
+                Status="Available",
+                Sell_Date=None,
+                Sell_Price=None,
+            )
+            db.session.add(property)
+            db.session.commit()
+            property = (
+                Properties.query.filter(Properties.Address == address)
+                .filter(Properties.Locality == locality)
+                .first()
+            )
+            propertyPhoto = Photos(P_ID=property.P_ID, Photo_URL=photoname)
+            sells = Sells(Seller_ID=session["userID"], P_ID=property.P_ID)
+            db.session.add(propertyPhoto)
+            db.session.commit()
+            db.session.add(sells)
+            db.session.commit()
+            return redirect(url_for("home"))
+
         else:
-            pass
+            return redirect(url_for("home"))
     else:
-        redirect(url_for("home"))
+        return redirect(url_for("home"))
