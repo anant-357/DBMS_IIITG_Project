@@ -14,7 +14,11 @@ from application.models import (
 
 @app.route("/agent/<agentID>/dashboard")
 def agent(agentID):
-    if "type" in session.keys() and session["type"] == "Agent":
+    if (
+        "type" in session.keys()
+        and session["type"] == "Agent"
+        and agentID == session["userID"]
+    ):
         agentProperties = (
             Properties.query.join(Shows).filter(Shows.License_ID == agentID).all()
         )
@@ -45,7 +49,11 @@ def agent(agentID):
 
 @app.route("/agent/<agentID>/profile")
 def agentProfile(agentID):
-    if "type" in session.keys() and session["type"] == "Agent":
+    if (
+        "type" in session.keys()
+        and session["type"] == "Agent"
+        and agentID == session["userID"]
+    ):
         broker = Brokers.query.filter(Brokers.License_ID == agentID).first()
         return render_template("agent/profile.html", broker=broker)
     else:
@@ -60,7 +68,11 @@ def agentProfileSimple(agentID):
 
 @app.route("/agent/<agentID>/properties")
 def agentProperties(agentID):
-    if "type" in session.keys() and session["type"] == "Agent":
+    if (
+        "type" in session.keys()
+        and session["type"] == "Agent"
+        and agentID == session["userID"]
+    ):
         soldProperties = (
             Properties.query.join(Shows)
             .filter(Shows.License_ID == agentID)
@@ -85,7 +97,11 @@ def agentProperties(agentID):
 
 @app.route("/agent/<agentID>/customers")
 def agentCustomers(agentID):
-    if "type" in session.keys() and session["type"] == "Agent":
+    if (
+        "type" in session.keys()
+        and session["type"] == "Agent"
+        and agentID == session["userID"]
+    ):
         clients = (
             Clients.query.join(Holds, Holds.Client_ID == Clients.Client_ID)
             .join(Properties, Properties.P_ID == Holds.P_ID)
