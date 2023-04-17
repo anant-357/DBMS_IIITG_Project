@@ -27,43 +27,29 @@ WHERE
 
 --4
 
-WITH agentProfit AS (
+WITH soldProperties AS (
+        SELECT *
+        FROM `Properties`
+        WHERE
+            YEAR(`Sell_Date`) = 2022
+    ),
+    agentProfit AS (
         SELECT
             `Name`,
             SUM(`Price`) as Profit
         FROM `Brokers`
             NATURAL JOIN `Shows`
-            NATURAL JOIN `Properties`
+            NATURAL JOIN soldProperties
         GROUP BY `Name`
     )
 SELECT `Name`
-FROM agentProfit as first
-WHERE first.Profit = (
+FROM agentProfit
+WHERE Profit = (
         SELECT MAX(Profit)
         FROM agentProfit
     );
 
 --5
-
-SELECT *
-FROM Properties
-WHERE Price = (
-        SELECT MAX(Price)
-        FROM Properties
-        WHERE `Rent` = FALSE
-    )
-UNION
-SELECT *
-FROM Properties
-WHERE Price = (
-        SELECT MAX(Price)
-        FROM Properties
-        WHERE
-            `Rent` IS TRUE
-    )
-    AND `Rent` = TRUE;
-
---6
 
 WITH soldProperties AS (
         SELECT *
@@ -86,4 +72,26 @@ FROM `Brokers`
 GROUP BY
     `Brokers`.`License_ID`;
 
-SELECT * FROM `Properties`;
+--6
+
+SELECT *
+FROM Properties
+WHERE Price = (
+        SELECT MAX(Price)
+        FROM Properties
+        WHERE
+            `Rent` IS FALSE
+    )
+    AND `Rent` IS FALSE
+UNION
+SELECT *
+FROM Properties
+WHERE Price = (
+        SELECT MAX(Price)
+        FROM Properties
+        WHERE
+            `Rent` IS TRUE
+    )
+    AND `Rent` IS TRUE;
+
+SELECT * FROM `Properties` WHERE ;
