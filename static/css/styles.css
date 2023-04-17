@@ -525,6 +525,19 @@ input[type="number"]::-webkit-outer-spin-button {
   text-decoration: none;
 }
 
+.sell-property {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.sell-property > a {
+  background-color: black;
+  padding: 5px 15px;
+  color: white;
+  text-decoration: none;
+}
+
 .properties h4 {
   color: black;
   text-align: center;
@@ -927,4 +940,18 @@ input[type="number"]::-webkit-outer-spin-button {
   .footer .col-1 {
     padding-left: 50px;
   }
+}
+
+.add-property-button {
+  padding: 15px 25px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: large;
+  border-radius: 5px;
+  background-color: lightblue;
+  text-decoration: none;
+  color: black;
+}
+
+.input_field:has(.add-property-button) {
+  margin-top: 20px;
 }

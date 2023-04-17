@@ -7,23 +7,26 @@ const navbar = document.querySelector(".navbar");
 let position = null;
 
 registerLink.addEventListener("click", () => {
-  wrapper.className = "wrapper active";
+  wrapper.className = "wrapper active active-popup";
 });
 
 loginLink.addEventListener("click", () => {
-  wrapper.className = "wrapper";
+  wrapper.className = "wrapper active-popup";
 });
 
 btnPopup.addEventListener("click", () => {
   const wrapperIsActive = wrapper.classList.contains("active");
   const wrapperIsPopupActive = wrapper.classList.contains("active-popup");
-  const targetPosition = wrapperIsActive && !wrapperIsPopupActive ? navbar.getBoundingClientRect().top : position;
-  
+  const targetPosition =
+    wrapperIsActive && !wrapperIsPopupActive
+      ? navbar.getBoundingClientRect().top
+      : position;
+
   window.scrollTo({
     top: targetPosition,
     behavior: "smooth",
   });
-  
+
   wrapper.classList.toggle("active-popup");
   position = wrapperIsPopupActive ? position : window.scrollY;
 });
@@ -33,6 +36,6 @@ iconClose.addEventListener("click", () => {
     top: position,
     behavior: "smooth",
   });
-  
+
   wrapper.classList.remove("active-popup");
 });
