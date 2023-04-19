@@ -1,6 +1,6 @@
 # **Nimbus Aurora**
 #### **`Your sanctuary in the clouds`**
-Together, "Nimbus Aurora" can be interpreted as a name that combines the meanings of both words to evoke a sense of natural beauty and wonder. It could be a fitting name for a real estate project that aims to provide a tranquil and inspiring environment, perhaps with a focus on eco-friendly and sustainable design.
+Together, "Nimbus Aurora" can be interpreted as a name that combines the meanings of both words to evoke a sense of natural beauty and wonder. Our real estate project aims to provide a tranquil and inspiring environment with a focus on eco-friendlieness and sustainable design.
 
 ## Entity Relationship Diagram
 
