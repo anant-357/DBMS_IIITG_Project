@@ -72,6 +72,12 @@ class Photos(db.Model):
 
 
 def isValidUser(userID, password, type):
+    admin = {
+        "2101036": "Anant",
+        "2101032": "Aman",
+        "2101035": "Amritjot",
+        "2101017": "Aditi",
+    }
     if type == "Agent":
         checkList = Brokers.query.all()
         for broker in checkList:
@@ -89,4 +95,12 @@ def isValidUser(userID, password, type):
         for seller in checkList:
             if str(seller.Seller_ID) == str(userID) and seller.Password == password:
                 return (True, seller.Name)
+
+    elif type == "Admin":
+        if str(userID) in admin.keys() and password == "clutcher":
+            return (True, admin[userID])
     return (False, "")
+
+
+def checkUser(clientID):
+    return True
