@@ -3,6 +3,7 @@ from flask import render_template
 from application.models import (
     Properties,
     isValidUser,
+    checkUser,
     Holds,
     Brokers,
     Shows,
@@ -10,6 +11,8 @@ from application.models import (
     Sellers,
     Sells,
 )
+from application.database import db
+from datetime import date
 
 
 @app.route("/agent/<agentID>/dashboard")
@@ -66,31 +69,47 @@ def agentProfileSimple(agentID):
     return render_template("agent/profileSimple.html", broker=broker)
 
 
-@app.route("/agent/<agentID>/properties")
+@app.route("/agent/<agentID>/properties", methods=["GET", "POST"])
 def agentProperties(agentID):
     if (
         "type" in session.keys()
         and session["type"] == "Agent"
         and agentID == session["userID"]
     ):
-        soldProperties = (
-            Properties.query.join(Shows)
-            .filter(Shows.License_ID == agentID)
-            .filter(Properties.Status == "Sold")
-            .all()
-        )
-        pendingProperties = (
-            Properties.query.join(Shows)
-            .filter(Shows.License_ID == agentID)
-            .filter(Properties.Status == "Available")
-            .all()
-        )
-        return render_template(
-            "agent/properties.html",
-            agentID=agentID,
-            pendingProperties=pendingProperties,
-            soldProperties=soldProperties,
-        )
+        if request.method == "GET":
+            soldProperties = (
+                Properties.query.join(Shows)
+                .filter(Shows.License_ID == agentID)
+                .filter(Properties.Status == "Sold")
+                .all()
+            )
+            pendingProperties = (
+                Properties.query.join(Shows)
+                .filter(Shows.License_ID == agentID)
+                .filter(Properties.Status == "Available")
+                .all()
+            )
+            return render_template(
+                "agent/properties.html",
+                agentID=agentID,
+                pendingProperties=pendingProperties,
+                soldProperties=soldProperties,
+            )
+        elif request.method == "POST":
+            price = request.form["sellingPrice"]
+            id = request.form["clientID"]
+            pid = request.form["PID"]
+            if checkUser(id):
+                db.session.add(Holds(Client_ID=id, P_ID=pid))
+                db.session.commit()
+                property = Properties.query.filter(Properties.P_ID == pid).first()
+                property.Sell_Date = date.today()
+                property.Sell_Price = price
+                property.Status = "Sold"
+                db.session.commit()
+            return redirect(url_for("agentProperties", agentID=agentID))
+        else:
+            return redirect(url_for("home"))
     else:
         return redirect(url_for("home"))
 
