@@ -456,6 +456,6 @@ VALUES ("A1.jpg"), ("A2.webp"), ("A3.jpeg"), ("A4.jpg"), ("A5.jpg"), ("A6.webp")
 
 DELETE FROM Brokers WHERE License_ID>11;
 
-UPDATE Brokers 
-SET Photo="A9.jpg"    
-WHERE LICENSE_ID=9;
+UPDATE `Photos`
+SET Photo_URL="pexels-max-rahubovskiy-5997993.jpg"    
+WHERE P_ID=8;
