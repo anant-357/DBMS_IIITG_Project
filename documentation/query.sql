@@ -94,4 +94,4 @@ WHERE Price = (
     )
     AND `Rent` IS TRUE;
 
-SELECT * FROM `Properties` WHERE ;
+SELECT * FROM `Properties`;
