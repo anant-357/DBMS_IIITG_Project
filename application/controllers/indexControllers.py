@@ -1,4 +1,11 @@
-from flask import current_app as app, session, request, url_for, redirect, flash
+from flask import (
+    current_app as app,
+    session,
+    request,
+    url_for,
+    redirect,
+    flash,
+)
 from flask import render_template
 from application.models import Properties, isValidUser, Photos, Sells, Brokers
 from application.database import db
@@ -16,11 +23,12 @@ def home():
         max_area = max(areas)[0]
         diff = (max_area - min_area) // 5
         areas = list(range(min_area, max_area + 1, diff))
-        print(areas)
 
         if "badlogin" in session.keys():
             session.pop("badlogin")
             flash("Either userID or Password is wrong!")
+
+        print(dict(session).keys(), dict(session).values())
         return render_template(
             "home/index.html", properties=properties, localities=localities, areas=areas
         )
@@ -120,8 +128,73 @@ def addProperty():
 def search():
     min_price = None
     max_price = None
+    area = None
+    locality = None
+    availability = None
+    status = None
+    localities = Brokers.query.with_entities(Brokers.Locality.distinct()).all()
+    areas = Properties.query.with_entities(Properties.Area.distinct()).all()
     if request.method == "POST":
+        ret = Properties.query.filter(Properties.Status != "Sold")
         locality = request.form["locality"]
+        min_price = request.form["min_price"]
+        max_price = request.form["max_price"]
+        area = request.form["area"]
+        availability = request.form["availability"]
+        if locality != "-":
+            ret = ret.filter(Properties.Locality == locality)
 
+        if availability != "-":
+            if availability == "sale":
+                ret = ret.filter(Properties.Rent == 0)
+            else:
+                ret = ret.filter(Properties.Rent == 1)
+
+        if status != "-":
+            if status == "sold":
+                ret = ret.filter(Properties.Status == "Sold")
+            else:
+                ret = ret.filter(Properties.Status != "Sold")
+
+        if area != "-":
+            area = area.split("-")
+            ret = ret.filter(Properties.Area <= int(area[1])).filter(
+                Properties.Area >= int(area[0])
+            )
+        ret = ret.filter(Properties.Price >= min_price).filter(
+            Properties.Price <= max_price
+        )
+
+        return render_template(
+            "home/index.html",
+            properties=ret.join(Photos).all(),
+            localities=localities,
+            areas=areas,
+        )
+
+    else:
+        return redirect(url_for("home"))
+
+
+@app.route("/sold", methods=["GET", "POST"])
+def sold():
+    if request.method == "GET":
+        properties = (
+            Properties.query.filter(Properties.Status == "Sold").join(Photos).all()
+        )
+        localities = Brokers.query.with_entities(Brokers.Locality.distinct()).all()
+        areas = Properties.query.with_entities(Properties.Area.distinct()).all()
+        min_area = min(areas)[0]
+        max_area = max(areas)[0]
+        diff = (max_area - min_area) // 6
+        areas = list(range(min_area, max_area + 1, diff))
+        print(areas)
+
+        if "badlogin" in session.keys():
+            session.pop("badlogin")
+            flash("Either userID or Password is wrong!")
+        return render_template(
+            "home/index.html", properties=properties, localities=localities, areas=areas
+        )
     else:
         return redirect(url_for("home"))
