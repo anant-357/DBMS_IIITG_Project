@@ -47,7 +47,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-top: 40px;
 }
 
-#menu .items li {
+#menu .items a li {
   list-style: none;
   padding: 50px 0;
   transition: 0.3s ease;
@@ -78,7 +78,7 @@ input[type="number"]::-webkit-outer-spin-button {
     border-left: 4px solid azure;
 } */
 
-#menu .items li a {
+#menu .items a li {
   text-decoration: none;
   color: aliceblue;
   font-weight: 300px;
@@ -236,6 +236,10 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: grey;
 }
 
+.values > * > .list {
+  color: aqua;
+}
+
 .values .val-box h3 {
   font-size: 20px;
   font-weight: 600;
@@ -289,7 +293,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .values .sale h3 {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
   color: lightblue;
   padding: 10px 30px 10px 40px;
@@ -314,7 +318,7 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 60px;
   height: 60px;
   line-height: 60px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   text-align: center;
   color: lightblue;
   margin-right: 15px;
