@@ -18,8 +18,9 @@ def admin():
         Properties.query.join(Holds).filter(Properties.Sell_Date != None).all()
     )
     unsoldProperties = (
-        Properties.query.join(Holds).filter(Properties.Sell_Date == None).all()
+        Properties.query.join(Holds).filter(Properties.Status == "Available").all()
     )
+    print(unsoldProperties)
 
     properties = (
         Properties.query.filter(Properties.Sell_Date != None)
@@ -70,8 +71,8 @@ def admin():
         properties=properties,
         bestPrice=bestPrice.Sell_Price,
         numberOfLocalities=numberOfLocalities,
-        qualityBroker = qualityBroker,
-        quantityBroker = quantityBroker
+        qualityBroker=qualityBroker,
+        quantityBroker=quantityBroker,
     )
 
 
