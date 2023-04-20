@@ -1,7 +1,11 @@
-<nav class="navbar background1">
+<nav class="navbar background1" id="navbar">
   <ul class="nav-list">
     <div class="logo">
-      <img src="{{url_for('static', filename='images/1.png')}}" alt="logo" />
+      <img
+        src="{{url_for('static', filename='images/1.png')}}"
+        alt="logo"
+        class="logo-img"
+      />
     </div>
     <li>
       <a href="#Realty">NIMBUS AURORA</a>
@@ -11,7 +15,7 @@
     <li><a href="{{url_for('home')}}">HOME</a></li>
     <li><a href="{{url_for('aboutUs')}}">ABOUT</a></li>
     <li><a href="{{url_for('contactUs')}}">CONTACT</a></li>
-    {%if 'username' in session.keys()%} {%if session['type'] == "Agent"%}
+    {%if 'username' in session.keys() and session['type'] == "Agent"%}
     <li>
       <a href="{{url_for('agent', agentID = session['userID'])}}"
         >{{session['username']}}</a
@@ -20,14 +24,14 @@
     <li>
       <a href="{{url_for('logout')}}">Logout</a>
     </li>
-    {%else%}
+    {%elif 'username' in session.keys() and session['type'] !="Agent"%}
     <li>
       <a href="#"> {{session['username']}} </a>
     </li>
     <li>
       <a href="{{url_for('logout')}}">Logout</a>
     </li>
-    {%endif%} {%else%}
+    {%else%}
     <button class="btnLogin-popup">LOGIN</button>
     {%endif%}
   </div>

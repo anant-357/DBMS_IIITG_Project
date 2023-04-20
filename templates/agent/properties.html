@@ -10,6 +10,35 @@
     <title>AGENT-DASHBOARD</title>
   </head>
   <body>
+    <style>
+      .sellButton {
+        padding: 5px 30px;
+        background-color: black;
+        outline: none;
+        border: 2px solid black;
+        border-radius: 5px;
+        color: white;
+        font-size: large;
+      }
+
+      .sellButton:hover {
+        background-color: rgb(255, 255, 255);
+        color: black;
+        cursor: pointer;
+      }
+      .sellingPrice {
+        border: none;
+        outline: none;
+        background-color: lightgray;
+        height: 25px;
+        width: 40%;
+        border-bottom: 1px solid black;
+        text-align: center;
+      }
+      .pid {
+        width: 40px;
+      }
+    </style>
     {%include 'agent/menu.html'%}
 
     <section id="interface">
@@ -35,7 +64,12 @@
             {% for property in soldProperties %}
             <tr>
               <td class="property_id">
-                <h5>{{property.P_ID}}</h5>
+                <input
+                  type="number"
+                  class="sellingPrice pid"
+                  readonly
+                  value="{{property.P_ID}}"
+                />
               </td>
 
               <td class="Address">
@@ -84,69 +118,66 @@
               <td>Status</td>
               <td>Year Of Construction</td>
               <td>Sell Price</td>
+              <td>Client ID</td>
               <td>Connect</td>
             </tr>
           </thead>
           <tbody>
             {% for property in pendingProperties %}
             <tr>
-              <td class="Price">
-                <h5>{{property.P_ID}}</h5>
-              </td>
+              <form method="POST" action="">
+                <td class="Price">
+                  <input
+                    type="number"
+                    name="PID"
+                    class="sellingPrice pid"
+                    readonly
+                    value="{{property.P_ID}}"
+                  />
+                </td>
 
-              <td class="Address">
-                <h5>{{property.Address}}</h5>
-              </td>
+                <td class="Address">
+                  <h5>{{property.Address}}</h5>
+                </td>
 
-              <td class="Price">
-                <h5>{{property.Price}}</h5>
-              </td>
+                <td class="Price">
+                  <h5>{{property.Price}}</h5>
+                </td>
 
-              <td class="Rent">
-                <h5>{{property.Rent}}</h5>
-              </td>
+                <td class="Rent">
+                  <h5>{{property.Rent}}</h5>
+                </td>
 
-              <td class="status">
-                <h5>{{property.Status}}</h5>
-              </td>
+                <td class="status">
+                  <h5>{{property.Status}}</h5>
+                </td>
 
-              <td class="Year">
-                <h5>{{property.Date_Of_Construction}}</h5>
-              </td>
-              <style>
-                .sellButton {
-                  padding: 5px 30px;
-                  background-color: black;
-                  outline: none;
-                  border: 2px solid black;
-                  border-radius: 5px;
-                  color: white;
-                  font-size: large;
-                }
+                <td class="Year">
+                  <h5>{{property.Date_Of_Construction}}</h5>
+                </td>
 
-                .sellButton:hover {
-                  background-color: rgb(255, 255, 255);
-                  color: black;
-                  cursor: pointer;
-                }
-                .sellingPrice{
-                  border:none;
-                  outline:none;
-                  background-color: lightgray;
-                  height: 25px;
-                  width: 40%;
-                  border-bottom: 1px solid black;
-                }
-              </style>
-              <td class="sellPrice">
-                <h5><input type="number" name="sellingPrice" class="sellingPrice" /></h5>
-              </td>
+                <td class="sellPrice">
+                  <h5>
+                    <input
+                      type="number"
+                      name="sellingPrice"
+                      class="sellingPrice"
+                    />
+                  </h5>
+                </td>
 
-              <td class="SellDate">
-            
-                <h5 class="not-h5"><button class="sellButton">Sell</button></h5>
-              </td>
+                <td class="sellPrice">
+                  <h5>
+                    <input type="number" name="clientID" class="sellingPrice" />
+                  </h5>
+                </td>
 
+                <td class="SellDate">
+                  <h5 class="not-h5">
+                    <input type="submit" class="sellButton" value="Sell" />
+                  </h5>
+                </td>
+              </form>
             </tr>
             {% endfor%}
           </tbody>

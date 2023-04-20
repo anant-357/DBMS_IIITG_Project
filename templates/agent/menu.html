@@ -3,7 +3,7 @@
     <img src="{{url_for('static', filename='images/1.png')}}" alt="" />
     <h2>
       <style>
-        .head-a{
+        .head-a {
           text-decoration: None;
           color: lightblue;
         }
@@ -12,17 +12,23 @@
     </h2>
   </div>
   <div class="items">
-    <li>
-      <span class="list"><ion-icon name="list-outline"></ion-icon></span>
-      <a href="{{url_for('agent', agentID = agentID)}}">DASHBOARD</a>
-    </li>
-    <li>
-      <span class="list"><ion-icon name="home"></ion-icon></span>
-      <a href="{{url_for('agentProperties', agentID = agentID)}}">PROPERTIES</a>
-    </li>
-    <li>
-      <span class="list"><ion-icon name="person"></ion-icon></span>
-      <a href="{{url_for('agentCustomers', agentID = agentID)}}">CUSTOMERS</a>
-    </li>
+    <a href="{{url_for('agent', agentID = agentID)}}">
+      <li>
+        <span class="list"><ion-icon name="list-outline"></ion-icon></span>
+        DASHBOARD
+      </li>
+    </a>
+    <a href="{{url_for('agentProperties', agentID = agentID)}}">
+      <li>
+        <span class="list"><ion-icon name="home"></ion-icon></span>
+        PROPERTIES
+      </li>
+    </a>
+    <a href="{{url_for('agentCustomers', agentID = agentID)}}">
+      <li>
+        <span class="list"><ion-icon name="person"></ion-icon></span>
+        CUSTOMERS
+      </li>
+    </a>
   </div>
 </section>
